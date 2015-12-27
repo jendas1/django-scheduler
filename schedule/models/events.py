@@ -54,6 +54,7 @@ class Event(with_metaclass(ModelBase, *get_model_bases())):
         verbose_name = _('event')
         verbose_name_plural = _('events')
         app_label = 'schedule'
+        abstract = True
 
     def __str__(self):
         return ugettext('%(title)s: %(start)s - %(end)s') % {
@@ -360,6 +361,7 @@ class EventRelation(with_metaclass(ModelBase, *get_model_bases())):
         verbose_name = _("event relation")
         verbose_name_plural = _("event relations")
         app_label = 'schedule'
+        abstract = True
 
     def __str__(self):
         return '%s(%s)-%s' % (self.event.title, self.distinction, self.content_object)
@@ -462,3 +464,6 @@ class Occurrence(with_metaclass(ModelBase, *get_model_bases())):
     def __eq__(self, other):
         return (isinstance(other, Occurrence) and
                 self.original_start == other.original_start and self.original_end == other.original_end)
+
+    class Meta(object):
+        abstract = True

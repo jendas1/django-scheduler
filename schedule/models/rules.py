@@ -93,3 +93,6 @@ class Rule(with_metaclass(ModelBase, *get_model_bases())):
     def __str__(self):
         """Human readable string for Rule"""
         return 'Rule %s params %s' % (self.name, self.params)
+
+    class Meta(object):
+        abstract = True

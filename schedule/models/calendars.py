@@ -241,6 +241,7 @@ class CalendarRelation(with_metaclass(ModelBase, *get_model_bases())):
         verbose_name = _('calendar relation')
         verbose_name_plural = _('calendar relations')
         app_label = 'schedule'
+        abstract = True
 
     def __str__(self):
         return '%s - %s' % (self.calendar, self.content_object)
